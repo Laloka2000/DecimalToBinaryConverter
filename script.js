@@ -2,12 +2,20 @@ const numberInput = document.getElementById('number-input');
 const convertBtn = document.getElementById('convert-btn');
 const result = document.getElementById('result');
 
+const decimalToBinary = (input) =>{
+    const inputs = [];
+    const qoutients = [];
+    const remainders = [];
+}
+
+
 const checkUserInput = () => {
     if(!numberInput.value || isNaN(parseInt(numberInput.value)) || parseInt(numberInput.value) < 0){
         alert("Please provide a decimal number greater than or equal to 0");
         return;
     }
-    console.log(numberInput.value);
+    decimalToBinary(parseInt(numberInput.value));
+    numberInput.value = "";
 };
 
 
