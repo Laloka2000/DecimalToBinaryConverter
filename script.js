@@ -6,6 +6,24 @@ const decimalToBinary = (input) =>{
     const inputs = [];
     const qoutients = [];
     const remainders = [];
+
+    if(input === 0){
+        result.innerText = "0";
+        return;
+    }
+
+    while(input > 0){
+        const qoutient = Math.floor(input / 2);
+        const remainder = input % 2;
+
+        inputs.push(input);
+        qoutients.push(qoutient);
+        remainders.push(remainder);
+
+        input = qoutient;
+    }
+
+    result.innerText = remainders.reverse().join("");
 }
 
 
