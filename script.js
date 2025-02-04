@@ -26,29 +26,13 @@ const animationData = [
     }
 ];
 
-const decimalToBinary = (input) =>{
-    const inputs = [];
-    const qoutients = [];
-    const remainders = [];
-
-    if(input === 0){
-        result.innerText = "0";
-        return;
+const decimalToBinary = (input) => {
+    if (input === 0 || input === 1) {
+      return String(input);
+    } else {
+      return decimalToBinary(Math.floor(input / 2)) + (input % 2);
     }
-
-    while(input > 0){
-        const qoutient = Math.floor(input / 2);
-        const remainder = input % 2;
-
-        inputs.push(input);
-        qoutients.push(qoutient);
-        remainders.push(remainder);
-
-        input = qoutient;
-    }
-
-    result.innerText = remainders.reverse().join("");
-}
+  };
 
 
 const checkUserInput = () => {
@@ -56,7 +40,7 @@ const checkUserInput = () => {
         alert("Please provide a decimal number greater than or equal to 0");
         return;
     }
-    decimalToBinary(parseInt(numberInput.value));
+    result.textContent = decimalToBinary(parseInt(numberInput.value));
     numberInput.value = "";
 };
 
