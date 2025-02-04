@@ -34,48 +34,41 @@ const decimalToBinary = (input) => {
   }
 };
 
-
 const showAnimation = () => {
-    result.innerText = "Call Stack Animation";
+  result.innerText = "Call Stack Animation";
 
-    animationData.forEach((obj) => {
-        setTimeout(() => {
-            animationContainer.innerHTML += `
-                <p id="${obj.inputVal} class="animation-frame">
-                    decimalToBinary(${obj.inputVal})
-                </p>
-            `
-        }, obj.addElDelay);
-
-        setTimeout(() => {
-            document.getElementById(obj.inputVal).textContent = obj.msg;
-        }, obj.addElDelay);
-
-        setTimeout(() => {
-            document.getElementById(obj.inputVal).remove();
-        }, obj.removeElDelay);
-
-    })
+  animationData.forEach((obj) => {
     setTimeout(() => {
-        result.textContent = decimalToBinary(5);
-    }, 20000);
+      animationContainer.innerHTML += `
+          <p id="${obj.inputVal}" class="animation-frame">
+            decimalToBinary(${obj.inputVal})
+          </p>
+        `;
+    }, obj.addElDelay);
+
+    setTimeout(() => {
+      document.getElementById(obj.inputVal).textContent = obj.msg;
+    }, obj.showMsgDelay);
+
+    setTimeout(() => {
+      document.getElementById(obj.inputVal).remove();
+    }, obj.removeElDelay);
+  });
+
+  setTimeout(() => {
+    result.textContent = decimalToBinary(5);
+  }, 20000);
 };
 
-
 const checkUserInput = () => {
+  const inputInt = parseInt(numberInput.value);
 
-    const inputInt = parseInt(numberInput.value);
-
-  if (
-    !numberInput.value ||
-    isNaN(inputInt) ||
-    inputInt < 0
-  ) {
+  if (!numberInput.value || isNaN(inputInt) || inputInt < 0) {
     alert("Please provide a decimal number greater than or equal to 0");
     return;
   }
 
-  if(inputInt === 5){
+  if (inputInt === 5) {
     showAnimation();
     return;
   }
